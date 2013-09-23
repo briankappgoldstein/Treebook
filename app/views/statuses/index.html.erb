@@ -2,11 +2,11 @@
  <h1>Newsfeed</h1>
  </div>
 
- <%= link_to "Post a New Status", new_status_path, class:"btn btn-statuses" %>
+ <%= link_to "Post a New Status", new_status_path, class:"btn btn-success" %>
 
- <% @success.each do |status| %>
-<div class="status hover">
-		<strong><%= status.name %></strong>
+ <% @statuses.each do |status| %>
+<div class="status">
+		<strong><%= status.user.full_name %></strong>
 		<p><%= status.content %></p>
 	</div>
 	<div class="meta">
