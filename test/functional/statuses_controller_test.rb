@@ -17,6 +17,12 @@ class StatusesControllerTest < ActionController::TestCase
     assert_redirected_to new_user_session_path
   end
 
+  test "should be logged in to post a status" do
+  post :create, status:{content "hello"}
+  assert_response :redirect
+  assert_redirected_to new_user_session_path
+  end
+
   test "should create status" do
     assert_difference('Status.count') do
       post :create, status: { content: @status.content, name: @status.name }
@@ -37,6 +43,7 @@ class StatusesControllerTest < ActionController::TestCase
 
   test "should update status" do
     put :update, id: @status, status: { content: @status.content, name: @status.name }
+    assert_response :redirect
     assert_redirected_to status_path(assigns(:status))
   end
 
