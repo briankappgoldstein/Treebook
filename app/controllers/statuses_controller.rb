@@ -1,4 +1,6 @@
 class StatusesController < ApplicationController
+
+  before_filter :authenticate_user!, only: [:new]
   # GET /statuses
   # GET /statuses.json
   def index
@@ -9,6 +11,11 @@ class StatusesController < ApplicationController
       format.json { render json: @statuses }
     end
   end
+
+  def login 
+    #successful login attempt
+    flash[:notice] ="You're Logged In!"
+  end  
 
   # GET /statuses/1
   # GET /statuses/1.json
@@ -68,6 +75,7 @@ class StatusesController < ApplicationController
       end
     end
   end
+
 
   # DELETE /statuses/1
   # DELETE /statuses/1.json
