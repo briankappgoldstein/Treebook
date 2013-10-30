@@ -13,7 +13,10 @@ class User < ActiveRecord::Base
  validates :last_name, presence: true
 
  validates :profile_name, presence: true,
-                          uniqueness: true
+                          uniqueness: true, 
+                           format:  {
+                             with: /[a-ZA-Z0-9_-]+/,
+                           }
 
  has_many :statuses
 
