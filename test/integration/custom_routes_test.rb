@@ -16,4 +16,9 @@ end
  	get '/register'
  	assert_response :success
  end
+
+ test "that a profile page works" do
+ 	get '/briangoldstein'
+ 	assert_response :success
+ end
 end
